@@ -13,7 +13,7 @@ Esse projeto utiliza as seguintes dependências nas seguintes versões:
 - [psycopg2-binary](https://www.psycopg.org/docs/install.html) (2.9.9) -> https://pypi.org/project/psycopg2-binary/
 - [asyncpg](https://github.com/MagicStack/asyncpg) (0.28.0) -> https://pypi.org/project/asyncpg/
 
-## Quero usar outro SGBD (Sistema de Gerenciamento de Banco de Dados)
+## Quero usar outro Sistema de Gerenciamento de Banco de Dados (SGBD)
 
 Esse projeto foi configurado para utilizar PostgreSQL como banco de dados, mas fique a vontade para utilizar outro SGBD que mais lhe agradar. Faça o seguinte caso queira utilizar outro banco de dados:
 - Remova as dependências `psycopg2-binary` e `asyncpg` de `requirements.txt`;
@@ -74,7 +74,7 @@ class MeuModelo(ormar.Model):
 - `class MeuModelo(ormar.Model)` -> Estamos fazendo nosso modelo herdar de ormar.Model para que tenhamos os métodos de busca, inserção, atualização, deleção e remoção que o Ormar nos proporciona;
 - `class Meta(BaseMeta)` -> Em `BaseMeta` nós definimos as configurações do banco de dados e aqui, através da herança, estamos passando essas configurações para o Ormar.
 
-## Migrations automatizadas
+## Automatizando as migrações
 Para que as migrations sejam geradas automaticamente é preciso fazer o seguinte:
 - Acesse o arquivo `env.py` (`migrations/env.py`);
 - Cole o seguinte código para carregar as variáveis de ambiente:
@@ -89,6 +89,7 @@ config.set_section_option(section, "DB_NAME", os.environ.get("DB_NAME"))
 - Importe seu modelo `from models import MeuModelo`;
 - Abaixo do importe do seu modelo, realize o importe de: `from db import BaseMeta`;
 - Procure por `target_metadata` e faça o seguinte: `target_metadata = BaseMeta.metadata`;
+- Importante: Todo modelo que você criar, você deverá importa-lo no arquivo `env.py` (`migrations/env.py`)
 
 ## Comandos
 
