@@ -104,6 +104,7 @@ config.set_section_option(section, "DB_NAME", os.environ.get("DB_NAME"))
 # Referências
 
 https://hackernoon.com/how-to-set-up-fastapi-ormar-and-alembic
+
 https://learnbatta.com/blog/getting-started-with-alembic/
 
 
